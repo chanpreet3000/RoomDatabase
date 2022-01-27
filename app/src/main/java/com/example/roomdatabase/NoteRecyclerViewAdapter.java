@@ -1,6 +1,5 @@
 package com.example.roomdatabase;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +16,19 @@ import java.util.List;
 public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerViewAdapter.NoteRecyclerViewHolder> {
 
     private List<Note> listOfNotes = new ArrayList<>();
-    private Context context;
+    private onItemClickListener listener;
 
-    public NoteRecyclerViewAdapter(Context context) {
-        this.context = context;
+    public NoteRecyclerViewAdapter() {
     }
 
-    public NoteRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.note_item, parent, false);
+    @NonNull
+    public NoteRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.note_item, parent, false);
         return new NoteRecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteRecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(NoteRecyclerViewHolder holder, int position) {
         holder.priorityTextView.setText(String.valueOf(listOfNotes.get(position).getPriority()));
         holder.titleTextView.setText(listOfNotes.get(position).getTitle());
         holder.descriptionTextView.setText(listOfNotes.get(position).getDescription());
@@ -38,6 +37,10 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
     @Override
     public int getItemCount() {
         return listOfNotes.size();
+    }
+
+    public Note getNoteAt(int position) {
+        return listOfNotes.get(position);
     }
 
     public void setListOfNotes(List<Note> listOfNotes) {
@@ -55,6 +58,19 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
             priorityTextView = itemView.findViewById(R.id.priorityTextView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+            itemView.setOnClickListener(view -> {
+                if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(getNoteAt(getAdapterPosition()));
+                }
+            });
         }
+    }
+
+    public interface onItemClickListener {
+        void onItemClick(Note note);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        this.listener = listener;
     }
 }

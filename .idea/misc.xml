@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/chanp/AndroidStudioProjects/RoomDatabase2/app/src/main/res/layout/activity_add_note.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/RoomDatabase2/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/RoomDatabase2/app/src/main/res/layout/activity_update_note.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/RoomDatabase2/app/src/main/res/layout/note_item.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/RoomDatabase2/app/src/main/res/menu/add_note_menu.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/RoomDatabase2/app/src/main/res/menu/main_menu.xml" value="0.23645833333333333" />
       </map>
     </option>
   </component>

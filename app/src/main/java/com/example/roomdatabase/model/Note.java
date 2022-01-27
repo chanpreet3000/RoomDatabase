@@ -15,6 +15,13 @@ public class Note {
     public Note() {
     }
 
+    public Note(int id, String title, String description, int priority) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+    }
+
     public Note(String title, String description, int priority) {
         this.title = title;
         this.description = description;
